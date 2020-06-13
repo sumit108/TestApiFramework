@@ -53,3 +53,6 @@ C:\Users\SumitThapar\source\Environment\PreSit\ApiTestingDemo\RestSharpApiTests\
 C:\Users\SumitThapar\source\Environment\PreSit\ApiTestingDemo\RestSharpApiTests\obj\Debug\RestSharpApiTests.csprojResolveAssemblyReference.cache
 C:\Users\SumitThapar\source\Environment\PreSit\ApiTestingDemo\RestSharpApiTests\obj\Debug\RestSharpApiTests.exe
 C:\Users\SumitThapar\source\Environment\PreSit\ApiTestingDemo\RestSharpApiTests\obj\Debug\RestSharpApiTests.pdb
+C:\Users\SumitThapar\Documents\GitHub\TestApiFramework\RestSharpApiTests\bin\Debug\RestSharpApiTests.exe.config
+C:\Users\SumitThapar\Documents\GitHub\TestApiFramework\RestSharpApiTests\obj\Debug\RestSharpApiTests.exe
+C:\Users\SumitThapar\Documents\GitHub\TestApiFramework\RestSharpApiTests\obj\Debug\RestSharpApiTests.pdb
