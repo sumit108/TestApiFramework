@@ -1,6 +1,6 @@
 ﻿namespace RestSharpApiTests.PropertyClass
 {
-    class SingleUserPropertyClass
+    class SingleUser
     {
         public data data { get; set; }
         public ad ad { get; set; }

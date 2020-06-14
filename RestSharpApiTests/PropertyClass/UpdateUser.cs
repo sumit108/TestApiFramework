@@ -1,6 +1,6 @@
 ﻿namespace RestSharpApiTests.PropertyClass
 {
-    class Update: CreatePartial
+    class UpdateUser: CreateUserPartial
     {
         public string updatedAt{ get; set; }
     }

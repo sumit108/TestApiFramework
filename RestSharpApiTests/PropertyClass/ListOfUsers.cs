@@ -2,7 +2,7 @@
 
 namespace RestSharpApiTests.PropertyClass
 {
-    class ListUsersPropertyClass
+    class ListOfUsers
     {
         public int page { get; set; }
         public int per_page { get; set; }

@@ -1,18 +1,25 @@
 ﻿using OfficeOpenXml;
+using RestSharpApiTests.PropertyClass;
 using System;
 using System.Data;
-using static System.Configuration.ConfigurationManager;
-namespace RestSharpApiTests
+using System.IO;
+
+namespace RestSharpApiTests.Helpers
 {
-    public static class ExcelHelper
+    public class ExcelUtil:GlobalSetUp
     {
         // Reads Excel and return datatable 
-        public static DataTable ExcelRead(string excelFilePath = "")
+        public DataTable ExcelRead(string excelFilePath = "")
         {
+            // Test Data
+            var fileName = _TestClassName;
+            var dir = (Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent).FullName;
+            var testDataPath = Path.Combine(dir, "TestData", fileName + ".xlsx");
+
             if (excelFilePath == "")
-                excelFilePath = AppSettings["TestDataPath"];
+                excelFilePath = testDataPath;
                 
-            ExcelPackage excel = new ExcelPackage(new System.IO.FileInfo(excelFilePath));
+            ExcelPackage excel = new ExcelPackage(new FileInfo(excelFilePath));
             var xlSheet = excel.Workbook.Worksheets["Sheet1"];
 
             DataTable dt = new DataTable();
@@ -20,7 +27,7 @@ namespace RestSharpApiTests
         }
 
         // Convert Excel Data to datatable
-        public static DataTable ToDataTable(this ExcelWorksheet ws, bool hasHeaderRow = true)
+        public DataTable ToDataTable(ExcelWorksheet ws, bool hasHeaderRow = true)
         {
             var tbl = new DataTable();
             foreach (var firstRowCell in ws.Cells[1, 1, 1, ws.Dimension.End.Column])
@@ -38,13 +45,12 @@ namespace RestSharpApiTests
         }
 
         // Return ExcelData for specific test case
-        public static ExcelProperties GetExcelDataRelativeToTc()
+        public ExcelProperties GetExcelDataRelativeToTc(DataTable dt)
         {
-            var dt = ExcelRead();
             var excelProperties = new ExcelProperties();
             foreach (DataRow row in dt.Rows)
             {
-                if (requres.testCaseName == row[ExcelColumnsEnum.Name.ToString()].ToString().Replace(" ", ""))
+                if (_TestCaseName == row[ExcelColumnsEnum.Name.ToString()].ToString().Replace(" ", ""))
                 {
                     excelProperties.Name = row[ExcelColumnsEnum.Name.ToString()].ToString();
                     excelProperties.RestClient = row[ExcelColumnsEnum.RestClient.ToString()].ToString();
